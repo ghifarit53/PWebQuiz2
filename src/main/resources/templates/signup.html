@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reddITS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<nav class="flex items-center justify-between bg-blue-900 px-1.5 py-1 fixed top-0 left-0 right-0">
+    <div class="flex items-center text-xl px-2 py-4 ml-8 text-white font-bold">
+        <a href="#" class="text-white mr-4">reddITS</a>
+    </div>
+    <div class="ml-auto flex items-center space-x-10 mr-8">
+        <a href="#" class="text-white">Home</a>
+        <a href="#" class="text-white">New Post</a>
+        <a href="#" class="text-white">Profile</a>
+    </div>
+</nav>
+</body>
+<div class="flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-md">
+        <h1 class="text-its text-3xl font-bold text-center mb-4 flex flex-col items-center justify-center" style="color: rgb(2,56,128)">
+            reddITS
+        </h1>
+        <form class="bg-white shadow-lg rounded px-8 py-6 mb-4" method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Username
+                </label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                       id="username" name="username" type="text" placeholder="Username" autofocus required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Department
+                </label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                       id="department" name="department" type="text" placeholder="Department" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Password
+                </label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                       id="password" name="password" type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="mt-1 inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-its-blue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
+                Sign Up
+            </button>
+            <div class="mt-2">
+                <span>Already have an account? </span><a href="/login" class="text-blue-700">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

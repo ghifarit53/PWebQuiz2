@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>reddITS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<nav class="flex items-center justify-between bg-blue-900 px-1.5 py-1 fixed top-0 left-0 right-0">
+  <div class="flex items-center text-xl px-2 py-4 ml-8 text-white font-bold">
+    <a href="#" class="text-white mr-4">reddITS</a>
+  </div>
+  <div class="ml-auto flex items-center space-x-10 mr-8">
+    <a href="#" class="text-white">Home</a>
+    <a href="#" class="text-white">New Post</a>
+    <a href="#" class="text-white">Profile</a>
+  </div>
+</nav>
+
+<div class="max-w-md">
+  <h1 class="text-3xl font-bold mb-2 text-center mt-10">
+    Make a new post
+  </h1>
+
+  <form action="/newpost" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 ">
+    <div class="m-20">
+      <textarea class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-72" id="body" maxlength="300" name="text" type="text" autofocus required></textarea>
+      <p class="text-gray-500 text-sm ">
+        <span id="charCount">0</span>/150 characters
+      </p>
+    </div>
+    <div class="flex justify-center">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:ring-2 ring-blue-500 ring-offset-2" type="submit">Post</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const textarea = document.getElementById("body");
+  const charCount = document.getElementById("charCount");
+  textarea.addEventListener("input", () => {
+    charCount.textContent = textarea.value.length + " characters";
+  });
+</script>
+
+</body>
+</html>

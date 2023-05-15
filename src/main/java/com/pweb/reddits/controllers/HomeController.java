@@ -15,4 +15,24 @@ public class HomeController {
         model.addAttribute("name", name);
         return "index";
     }
+
+    @GetMapping("/newpost")
+    public String post(Model model) {
+        return "newpost";
+    }
+
+    @GetMapping("/signup")
+    public String signup(Model model) {
+        return "signup";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        return "profile";
+    }
+
 }
