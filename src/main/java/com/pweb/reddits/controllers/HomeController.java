@@ -34,5 +34,9 @@ public class HomeController {
     public String profile(Model model) {
         return "profile";
     }
+    @GetMapping("/profilechange")
+    public String profilechange(Model model) {
+        return "profilechange";
+    }
 
 }

@@ -6,7 +6,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="flex justify-center min-h-screen bg-gray-100">
 <nav class="flex items-center justify-between bg-blue-900 px-1.5 py-1 fixed top-0 left-0 right-0">
   <div class="flex items-center text-xl px-2 py-4 ml-8 text-white font-bold">
     <a href="#" class="text-white mr-4">reddITS</a>
@@ -17,25 +17,24 @@
     <a href="#" class="text-white">Profile</a>
   </div>
 </nav>
-</body>
-<div class="flex items-center mb-6">
-  <img class="flex-none h-10 w-10 rounded-full object-cover mr-2" src="https://via.placeholder.com/150" alt="Profile Image">
-  <h1 class="text-3xl font-bold text-gray-800">
-    John Doe
-  </h1>
-</div>
-<div class="mb-4">
-  <h1 class="font-medium text-lg text-gray-600">
-    Department of IT
-  </h1>
+
+<div class="flex flex-col items-center mt-36">
+  <div>
+    <img class="rounded-full object-cover" src="https://via.placeholder.com/75" alt="">
+  </div>
+  <div class="ml-2">
+    <h1 class="font-bold text-xl">Dzaky Farhan</h1>
+  </div>
+  <div class="justify-center">
+    <h1 class="font-small text-md">
+      Informatics
+    </h1>
+  </div>
+  <a href="/changeprofile" class="mt-2 inline-flex items-center justify-center px-2 py-1 border border-transparent text-base font-medium rounded-md text-white bg-blue-900 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
+    Change Profile
+  </a>
 </div>
 
-<div>
-  <form action="/changeprofile" method="POST">
-    <input type="hidden" name="user_id" value="123">
-    <button type="submit" class="mt-1 inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-its-blue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
-      Edit Profile
-    </button>
-  </form>
-</div>
+
+</body>
 </html>
