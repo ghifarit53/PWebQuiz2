@@ -1,26 +1,31 @@
 package com.pweb.reddits.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "post")
 public class Post {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 150, nullable = false)
     private String text;
+
+    @Column(length = 64, nullable = false)
     private String slug;
+
+    @Column(length = 64, nullable = false)
     private String timestamp;
 
-    public Post() {
-    }
+    public Post() {}
 
-//    public Post(long id, String text, String slug, String timestamp) {
-//        this.id = id;
-//        this.text = text;
-//        this.slug = slug;
-//        this.timestamp = timestamp;
-//    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

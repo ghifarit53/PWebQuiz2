@@ -18,16 +18,19 @@
     </div>
 </nav>
 <div class="m-10">
-    <h1 class="text-center text-3xl font-bold">Create new post</h1>
+    <h1 class="text-center text-3xl font-bold">Edit post</h1>
 
     <div class="flex justify-center mt-4">
         <div class="rounded-lg">
-            <form th:action="@{/post/new}" th:object="${post}" method="POST">
+            <form th:action="@{/post/update}" th:object="${post}" method="POST">
+                <input type="hidden" name="id" th:field="*{id}">
+                <input type="hidden" name="id" th:field="*{slug}">
+                <input type="hidden" name="id" th:field="*{timestamp}">
+
                 <textarea type="text" name="text" th:field="*{text}" class="resize-none	block bg-white  border border-slate-300 rounded-md px-4 py-4 shadow-sm focus:outline-none focus:border-blue-900 focus:ring-blue-900 focus:ring-1 sm:text-sm placeholder:italic" maxlength="150" placeholder="Write your post here (max. 150 characters" rows="12" cols="50"></textarea>
 
                 <button class="mt-4 bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:ring-2 ring-blue-700 ring-offset-2"
-                        type="submit">Post</button>
-
+                        type="submit">Save edit</button>
             </form>
         </div>
     </div>

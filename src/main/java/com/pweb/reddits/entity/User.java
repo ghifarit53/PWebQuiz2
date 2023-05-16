@@ -1,21 +1,27 @@
 package com.pweb.reddits.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 32, nullable = false)
     private String username;
+
+    @Column(length = 64, nullable = false)
     private String password;
+
+    @Column(length = 32, nullable = false)
     private String department;
 
     public User() {
 
     }
-
-//    public User(long id, String username, String password, String department) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        this.department = department;
-//    }
 
     public long getId() {
         return id;

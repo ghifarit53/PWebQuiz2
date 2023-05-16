@@ -1,10 +1,9 @@
-package com.pweb.reddits.services;
+package com.pweb.reddits.service;
 
 import com.pweb.reddits.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service

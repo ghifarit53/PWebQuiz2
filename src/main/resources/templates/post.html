@@ -38,8 +38,7 @@
                 </button>
             </form>
 
-            <form action="/post/edit" method="POST">
-                <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <form th:action="@{'/post/edit/' + ${post.getId()}}" method="GET">
                 <button>
                     <span class="material-icons" style="font-size:20px">create</span>
                 </button>

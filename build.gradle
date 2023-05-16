@@ -17,7 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
 	implementation 'org.springframework.boot:spring-boot-starter-web:3.0.4'
 	implementation 'org.springframework.boot:spring-boot-devtools:3.0.4'
-	implementation 'com.mysql:mysql-connector-j:8.0.32'
+	implementation 'mysql:mysql-connector-java:8.0.32'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
