@@ -1,21 +1,21 @@
 package com.pweb.reddits.service;
 
 import com.pweb.reddits.entity.User;
+import com.pweb.reddits.repo.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserService {
-    private static List<User> users = new ArrayList<User>();
 
-    public List<User> findAll() {
-        return users;
+    @Autowired
+    private UserRepo repo;
+
+    public Iterable<User> findAll() {
+        return repo.findAll();
     }
 
     public void addUser(User user) {
-        user.setId(System.currentTimeMillis());
-        users.add(user);
+        repo.save(user);
     }
 }
