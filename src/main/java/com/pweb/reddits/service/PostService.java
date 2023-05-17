@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -17,6 +17,16 @@ public class PostService {
 
     public Iterable<Post> findAll() {
         return repo.findAll();
+    }
+
+    public List<Post> findByNewest() {
+        List<Post> reversed = new ArrayList<>();
+        for (Post p : repo.findAll()) {
+            reversed.add(p);
+        }
+        Collections.reverse(reversed);
+
+        return reversed;
     }
 
     public void add(Post post) {

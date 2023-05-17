@@ -29,7 +29,7 @@ public class WebController {
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("title", "Home");
-        model.addAttribute("posts", postService.findAll());
+        model.addAttribute("posts", postService.findByNewest());
 
         return "index";
     }
@@ -113,9 +113,19 @@ public class WebController {
         return "login";
     }
 
-    @GetMapping("/profile")
-    public String profilePage(Model model) {
-        model.addAttribute("title", "Profile");
+    @GetMapping("/profile/{username}")
+    public String profilePage(@PathVariable("username") String username, Model model) {
+        User u = userService.findByUsername(username);
+        if (u == null) {
+            u = new User();
+            u.setUsername("User not found");
+            u.setDepartment("");
+            model.addAttribute("user", u);
+            model.addAttribute("title", "User not found");
+        } else {
+            model.addAttribute("title", u.getUsername() + "'s Profile");
+            model.addAttribute("user", u);
+        }
 
         return "profile";
     }

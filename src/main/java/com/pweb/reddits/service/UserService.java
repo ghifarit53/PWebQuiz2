@@ -5,6 +5,8 @@ import com.pweb.reddits.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -17,5 +19,19 @@ public class UserService {
 
     public void addUser(User user) {
         repo.save(user);
+    }
+
+    public Optional<User> findById(Long id) {
+        return repo.findById(id);
+    }
+
+    public User findByUsername(String username) {
+        for (User u : repo.findAll()) {
+            if (u.getUsername().equals(username)) {
+                return u;
+            }
+        }
+
+        return null;
     }
 }

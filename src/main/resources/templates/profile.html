@@ -14,7 +14,7 @@
     <div class="ml-auto flex items-center space-x-10 mr-8">
         <a href="/" class="text-white opacity-40 font-bold hover:opacity-100 transition duration-100">Home</a>
         <a href="/newpost" class="text-white opacity-40 font-bold hover:opacity-100 transition duration-100">New Post</a>
-        <a href="/profile" class="text-white font-bold">Profile</a>
+        <a href="/profile/ghifarit53" class="text-white font-bold hover:opacity-100 transition duration-100">Profile</a>
     </div>
 </nav>
 <div class="flex justify-center bg-gray-100">
@@ -23,15 +23,13 @@
             <img class="h-32 w-32 rounded-full object-cover" src="https://via.placeholder.com/100" alt="">
         </div>
         <div class="justify-center mt-4">
-            <h1 class="font-bold text-xl">Dzaky Farhan</h1>
+            <h1 class="font-bold text-xl" th:text="${user.username}"></h1>
         </div>
         <div class="justify-center">
-            <h1 class="font-small text-md">
-                Informatics
-            </h1>
+            <h1 class="font-small text-md" th:text="${user.department}"></h1>
         </div>
         <a href="/changeprofile"
-           class="mt-4 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
+           class="mt-4 justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
             Change Profile
         </a>
     </div>
