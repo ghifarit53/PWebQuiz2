@@ -8,10 +8,7 @@ import com.pweb.reddits.util.Slugify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -26,6 +23,10 @@ public class WebController {
     @Autowired
     private UserService userService;
 
+    //
+    // GET Route
+    //
+
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("title", "Home");
@@ -34,9 +35,6 @@ public class WebController {
         return "index";
     }
 
-    //
-    // GET Route
-    //
     @GetMapping("/newpost")
     public String newPostPage(Model model) {
         model.addAttribute("title", "New Post");
@@ -60,10 +58,10 @@ public class WebController {
         return "post";
     }
 
-    @GetMapping("/edit_post/{id}")
-    public String postEditPage(@PathVariable("id") Long id, Model model) {
+    @RequestMapping(value = "/edit_post", method = RequestMethod.POST)
+    public String postEditPage(@ModelAttribute("post") Post post, Model model) {
         model.addAttribute("title", "Edit Post");
-        model.addAttribute("post", postService.findById(id));
+        model.addAttribute("post", post);
 
         return "editpost";
     }

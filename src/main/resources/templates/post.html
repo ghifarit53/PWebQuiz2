@@ -39,7 +39,12 @@
                 </button>
             </form>
 
-            <form th:action="@{'/edit_post/' + ${post.getId()}}" method="GET">
+            <form th:action="@{/edit_post}" th:object="${post}" method="POST">
+                <input type="hidden" name="id" th:field="*{id}">
+                <input type="hidden" name="slug" th:field="*{slug}">
+                <input type="hidden" name="timestamp" th:field="*{timestamp}">
+                <input type="hidden" name="text" th:field="*{text}">
+
                 <button>
                     <span class="material-icons" style="font-size:20px">create</span>
                 </button>
