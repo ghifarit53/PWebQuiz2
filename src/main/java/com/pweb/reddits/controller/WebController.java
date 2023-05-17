@@ -34,6 +34,9 @@ public class WebController {
         return "index";
     }
 
+    //
+    // GET Route
+    //
     @GetMapping("/newpost")
     public String newPostPage(Model model) {
         model.addAttribute("title", "New Post");
@@ -57,39 +60,12 @@ public class WebController {
         return "post";
     }
 
-    @PostMapping("/post/new")
-    public String postNew(Post post) {
-        post.setSlug(Slugify.slugify(post.getText()));
-        System.out.println(post.getSlug());
-
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
-        post.setTimestamp(sdf.format(new Timestamp(System.currentTimeMillis())));
-
-        postService.add(post);
-
-        return "redirect:/";
-    }
-
-    @PostMapping("/post/delete/{id}")
-    public String postDelete(@PathVariable("id") Long id) {
-        postService.removeById(id);
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/post/edit/{id}")
+    @GetMapping("/edit_post/{id}")
     public String postEditPage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("title", "Edit Post");
         model.addAttribute("post", postService.findById(id));
 
         return "editpost";
-    }
-
-    @PostMapping("/post/update")
-    public String postSave(Post post) {
-        postService.update(post);
-
-        return "redirect:/";
     }
 
     @GetMapping("/signup")
@@ -98,12 +74,6 @@ public class WebController {
         model.addAttribute("user", new User());
 
         return "signup";
-    }
-
-    @PostMapping("/user/signup")
-    public String userSignUp(User user) {
-        userService.addUser(user);
-        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -135,5 +105,42 @@ public class WebController {
         model.addAttribute("title", "Change Profile");
 
         return "changeprofile";
+    }
+
+    //
+    // POST Route
+    //
+
+    @PostMapping("/api/v1/user_signup")
+    public String userSignUp(User user) {
+        userService.addUser(user);
+        return "redirect:/";
+    }
+
+    @PostMapping("/api/v1/post_update")
+    public String postSave(Post post) {
+        postService.update(post);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/api/v1/post_new")
+    public String postNew(Post post) {
+        post.setSlug(Slugify.slugify(post.getText()));
+        System.out.println(post.getSlug());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
+        post.setTimestamp(sdf.format(new Timestamp(System.currentTimeMillis())));
+
+        postService.add(post);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/api/v1/post_delete/{id}")
+    public String postDelete(@PathVariable("id") Long id) {
+        postService.removeById(id);
+
+        return "redirect:/";
     }
 }

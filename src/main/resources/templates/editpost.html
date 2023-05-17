@@ -22,7 +22,7 @@
 
     <div class="flex justify-center mt-4">
         <div class="rounded-lg">
-            <form th:action="@{/post/update}" th:object="${post}" method="POST">
+            <form th:action="@{/api/v1/post_update}" th:object="${post}" method="POST">
                 <input type="hidden" name="id" th:field="*{id}">
                 <input type="hidden" name="id" th:field="*{slug}">
                 <input type="hidden" name="id" th:field="*{timestamp}">

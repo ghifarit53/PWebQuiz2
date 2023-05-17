@@ -19,7 +19,7 @@
         <h1 class="text-its text-3xl font-bold text-center mb-4 flex flex-col items-center justify-center">
             Sign up to reddITS
         </h1>
-        <form th:object="${user}" method="POST" th:action="@{/user/signup}" class="bg-white shadow-md rounded-lg px-8 py-6 mb-4">
+        <form th:object="${user}" method="POST" th:action="@{/api/v1/user_signup}" class="bg-white shadow-md rounded-lg px-8 py-6 mb-4">
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2">Username</label>
                 <input
