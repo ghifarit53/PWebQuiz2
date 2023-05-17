@@ -11,10 +11,10 @@ public class Comment {
 
     @Column(length = 150, nullable = false)
     private String text;
+    private String timestamp;
 
     private Long userId;
     private Long postId;
-    private String timestamp;
 
     public Comment() {
     }

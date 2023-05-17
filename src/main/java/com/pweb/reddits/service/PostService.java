@@ -20,10 +20,7 @@ public class PostService {
     }
 
     public List<Post> findByNewest() {
-        List<Post> reversed = new ArrayList<>();
-        for (Post p : repo.findAll()) {
-            reversed.add(p);
-        }
+        List<Post> reversed = new ArrayList<>(repo.findAll());
         Collections.reverse(reversed);
 
         return reversed;

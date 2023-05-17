@@ -1,7 +1,9 @@
 package com.pweb.reddits.controller;
 
+import com.pweb.reddits.entity.Comment;
 import com.pweb.reddits.entity.Post;
 import com.pweb.reddits.entity.User;
+import com.pweb.reddits.service.CommentService;
 import com.pweb.reddits.service.PostService;
 import com.pweb.reddits.service.UserService;
 import com.pweb.reddits.util.Slugify;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Controller
 @RequestMapping("")
@@ -23,6 +26,9 @@ public class WebController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CommentService commentService;
+
     //
     // GET Route
     //
@@ -31,6 +37,7 @@ public class WebController {
     public String homePage(Model model) {
         model.addAttribute("title", "Home");
         model.addAttribute("posts", postService.findByNewest());
+        model.addAttribute("commentService", commentService);
 
         return "index";
     }
@@ -52,8 +59,14 @@ public class WebController {
             }
         }
 
+        List<Comment> comments = commentService.findNewestByPostId(post.getId());
+
         model.addAttribute("post", post);
         model.addAttribute("title", post.getText());
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("comments", comments);
+        model.addAttribute("userService", userService);
+        model.addAttribute("commentService", commentService);
 
         return "post";
     }
@@ -64,6 +77,14 @@ public class WebController {
         model.addAttribute("post", post);
 
         return "editpost";
+    }
+
+    @RequestMapping(value = "/edit_comment", method = RequestMethod.POST)
+    public String commentEditPage(@ModelAttribute("comment") Comment comment, Model model) {
+        model.addAttribute("title", "Edit Comment");
+        model.addAttribute("comment", comment);
+
+        return "editcomment";
     }
 
     @GetMapping("/signup")
@@ -140,5 +161,31 @@ public class WebController {
         postService.removeById(id);
 
         return "redirect:/";
+    }
+
+    @PostMapping("/api/v1/add_comment")
+    public String addComment(Comment comment) {
+        comment.setUserId(1L);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
+        comment.setTimestamp(sdf.format(new Timestamp(System.currentTimeMillis())));
+
+        commentService.add(comment);
+
+        return "redirect:/post/" + postService.findById(comment.getPostId()).get().getSlug();
+    }
+
+    @PostMapping("/api/v1/delete_comment")
+    public String deleteComment(Comment comment) {
+        commentService.removeById(comment.getId());
+
+        return "redirect:/post/" + postService.findById(comment.getPostId()).get().getSlug();
+    }
+
+    @PostMapping("/api/v1/update_comment")
+    public String updateComment(Comment comment) {
+        commentService.update(comment);
+
+        return "redirect:/post/" + postService.findById(comment.getPostId()).get().getSlug();
     }
 }

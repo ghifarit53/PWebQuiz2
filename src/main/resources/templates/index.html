@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="${title} + ' | reddITS'"></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 </head>
 <body class="bg-gray-100 scrollbar-hide">
@@ -24,12 +25,12 @@
         <div class="bg-gray-200 my-6 p-6 max-w-3xl rounded-xl mr-2">
             <a href="/profile/ghifarit53" class="text-blue-900 font-bold">ghifarit53</a>
             <span>on</span>
-            <span th:text="${post.getTimestamp()}" class="text-gray-500"></span>
-            <a th:href="@{'/post/' + ${post.getSlug()}}">
-                <h2 th:text="${post.getText()}" class="text-xl font-semibold mt-2 mb-2"></h2>
+            <span th:text="${post.timestamp}" class="text-gray-500"></span>
+            <a th:href="@{'/post/' + ${post.slug}}">
+                <h2 th:text="${post.text}" class="text-xl font-semibold mt-2 mb-2"></h2>
                 <a class="flex space-x-1 items-center">
                     <span class="material-icons" style="font-size:20px">comment</span>
-                    <span>5</span>
+                    <span th:text="${commentService.getCountByPostId(post.id)}"></span>
                 </a>
             </a>
         </div>
